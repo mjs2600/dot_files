@@ -1,0 +1,94 @@
+set nocompatible               " be iMproved
+filetype off                   " required!
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required!
+Bundle 'gmarik/vundle'
+
+" My Bundles here:
+"
+" original repos on github
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-rails.git'
+Bundle 'sjl/badwolf'
+Bundle 'scrooloose/nerdtree'
+Bundle 'kien/ctrlp.vim'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'ervandew/supertab'
+Bundle 'vim-scripts/VimClojure'
+Bundle 'Lokaltog/vim-powerline'
+" Bundle 'tomtom/tlib_vim'
+" Bundle 'tomtom/checksyntax_vim'
+" Bundle 'tomtom/quickfixsigns_vim' 
+
+" vim-scripts repos
+Bundle 'vimwiki'
+Bundle 'taglist.vim'
+Bundle 'AutoComplPop'
+
+
+syntax on             " Enable syntax highlighting
+filetype plugin indent on     " required!
+"
+" Brief help
+" :BundleList          - list configured bundles
+" :BundleInstall(!)    - install(update) bundles
+" :BundleSearch(!) foo - search(or refresh cache first) for foo
+" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+"
+" see :h vundle for more details or wiki for FAQ
+" NOTE: comments after Bundle command are not allowed.
+
+set vb
+colorscheme badwolf
+set guifont=Menlo_Regular:h12               
+set list listchars=tab:>>,eol:¬,trail:·
+" Set line numbers
+set rnu
+set guioptions-=T  "remove toolbar
+set laststatus=2   " Always show the statusline
+set encoding=utf-8 " Necessary to show Unicode glyphs
+let g:Powerline_symbols = 'fancy'
+
+"
+" KEYBINDINGS
+"
+" Set line numbers
+set rnu
+set guioptions-=T  "remove toolbar
+set laststatus=2   " Always show the statusline
+set encoding=utf-8 " Necessary to show Unicode glyphs
+let g:Powerline_symbols = 'fancy'
+
+"
+" KEYBINDINGS
+"
+noremap <silent> <Right> <c-w>l
+noremap <silent> <Left> <c-w>h
+noremap <silent> <Up> <c-w>k
+noremap <silent> <Down> <c-w>j
+noremap <silent> <leader>sv :vs<CR>
+noremap <silent> <leader>sh :sp<CR>
+
+" Let there be leader!
+let mapleader = ','
+
+map <leader>d :NERDTreeToggle<CR>
+map <leader>f :CtrlP<CR>
+map <leader>r :CtrlPClearCache<CR>:CtrlP<CR>
+map <silent> <leader>c mpgg=G<CR>`p:%s/\s\+$//g<CR>
+map <leader>q :q<CR>
+map <leader>wq :wq<CR>
+
+" Tab completion
+"ruby
+autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+"improve autocomplete menu color
+highlight Pmenu ctermbg=238 gui=bold
+
