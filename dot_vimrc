@@ -20,9 +20,10 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'ervandew/supertab'
 Bundle 'vim-scripts/VimClojure'
 Bundle 'Lokaltog/vim-powerline'
+Bundle 'kchmck/vim-coffee-script'
 " Bundle 'tomtom/tlib_vim'
 " Bundle 'tomtom/checksyntax_vim'
-" Bundle 'tomtom/quickfixsigns_vim' 
+" Bundle 'tomtom/quickfixsigns_vim'
 
 " vim-scripts repos
 Bundle 'vimwiki'
@@ -42,9 +43,12 @@ filetype plugin indent on     " required!
 " see :h vundle for more details or wiki for FAQ
 " NOTE: comments after Bundle command are not allowed.
 
+set expandtab
+set shiftwidth=2
+set softtabstop=2
 set vb
 colorscheme badwolf
-set guifont=Menlo_Regular:h12               
+set guifont=Menlo_Regular:h12
 set list listchars=tab:>>,eol:¬,trail:·
 " Set line numbers
 set rnu
@@ -52,17 +56,10 @@ set guioptions-=T  "remove toolbar
 set laststatus=2   " Always show the statusline
 set encoding=utf-8 " Necessary to show Unicode glyphs
 let g:Powerline_symbols = 'fancy'
-
-"
-" KEYBINDINGS
-"
-" Set line numbers
-set rnu
-set guioptions-=T  "remove toolbar
-set laststatus=2   " Always show the statusline
-set encoding=utf-8 " Necessary to show Unicode glyphs
-let g:Powerline_symbols = 'fancy'
-
+set ignorecase
+set smartcase
+set hlsearch
+set incsearch
 "
 " KEYBINDINGS
 "
@@ -79,7 +76,7 @@ let mapleader = ','
 map <leader>d :NERDTreeToggle<CR>
 map <leader>f :CtrlP<CR>
 map <leader>r :CtrlPClearCache<CR>:CtrlP<CR>
-map <silent> <leader>c mpgg=G<CR>`p:%s/\s\+$//g<CR>
+map <silent> <leader>c mpgg=G<CR>:%s/\s\+$//g<CR>`p
 map <leader>q :q<CR>
 map <leader>wq :wq<CR>
 
@@ -92,3 +89,7 @@ autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 "improve autocomplete menu color
 highlight Pmenu ctermbg=238 gui=bold
 
+" Settings for VimClojure
+" let g:clj_highlight_builtins=1      " Highlight Clojure's builtins
+let vimclojure#HighlightBuiltins = 1
+" let g:clj_paren_rainbow=1           " Rainbow parentheses'!
