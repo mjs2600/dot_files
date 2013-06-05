@@ -4,92 +4,110 @@ filetype off                   " required!
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-" let Vundle manage Vundle
-" required!
+" Github Bundles
 Bundle 'gmarik/vundle'
-
-" My Bundles here:
-"
-" original repos on github
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-rails.git'
-Bundle 'sjl/badwolf'
-Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
-Bundle 'vim-ruby/vim-ruby'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'scrooloose/nerdtree'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-sensible'
+Bundle 'tpope/vim-abolish'
+Bundle 'tpope/vim-unimpaired'
+Bundle 'vim-scripts/vimwiki'
+Bundle 'scrooloose/syntastic'
+Bundle 'Shougo/neocomplcache.vim'
+Bundle 'sjl/badwolf'
+Bundle 'sjl/gundo.vim'
+Bundle 'othree/html5.vim'
 Bundle 'ervandew/supertab'
-Bundle 'vim-scripts/VimClojure'
-Bundle 'Lokaltog/vim-powerline'
+Bundle 'vim-scripts/taglist.vim'
+
+" Ruby
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'tpope/vim-rails.git'
 Bundle 'kchmck/vim-coffee-script'
-" Bundle 'tomtom/tlib_vim'
-" Bundle 'tomtom/checksyntax_vim'
-" Bundle 'tomtom/quickfixsigns_vim'
 
-" vim-scripts repos
-Bundle 'vimwiki'
-Bundle 'taglist.vim'
-Bundle 'AutoComplPop'
+" Dash
+Bundle 'rizzatti/funcoo.vim'
+Bundle 'rizzatti/dash.vim'
 
+" Haskell
+Bundle 'eagletmt/ghcmod-vim'
+Bundle 'dag/vim2hs'
+Bundle 'ujihisa/neco-ghc'
+Bundle 'Shougo/vimproc'
+Bundle 'Twinside/vim-haskellFold'
 
-syntax on             " Enable syntax highlighting
-filetype plugin indent on     " required!
-"
-" Brief help
-" :BundleList          - list configured bundles
-" :BundleInstall(!)    - install(update) bundles
-" :BundleSearch(!) foo - search(or refresh cache first) for foo
-" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
-"
-" see :h vundle for more details or wiki for FAQ
-" NOTE: comments after Bundle command are not allowed.
+" Elixir
+Bundle 'elixir-lang/vim-elixir'
 
-set expandtab
-set shiftwidth=2
-set softtabstop=2
-set vb
-colorscheme badwolf
-set guifont=Menlo_Regular:h12
-set list listchars=tab:>>,eol:¬,trail:·
-" Set line numbers
-set rnu
-set guioptions-=T  "remove toolbar
-set laststatus=2   " Always show the statusline
-set encoding=utf-8 " Necessary to show Unicode glyphs
-let g:Powerline_symbols = 'fancy'
-set ignorecase
-set smartcase
-set hlsearch
-set incsearch
-"
-" KEYBINDINGS
-"
-noremap <silent> <Right> <c-w>l
-noremap <silent> <Left> <c-w>h
-noremap <silent> <Up> <c-w>k
-noremap <silent> <Down> <c-w>j
-noremap <silent> <leader>sv :vs<CR>
-noremap <silent> <leader>sh :sp<CR>
+" Python
+Bundle 'davidhalter/jedi-vim'
+Bundle 'klen/python-mode'
 
-" Let there be leader!
-let mapleader = ','
+" Chuck
+Bundle 'vim-scripts/ck.vim'
 
-map <leader>d :NERDTreeToggle<CR>
-map <leader>f :CtrlP<CR>
-map <leader>r :CtrlPClearCache<CR>:CtrlP<CR>
-map <silent> <leader>c mpgg=G<CR>:%s/\s\+$//g<CR>`p
-map <leader>q :q<CR>
-map <leader>wq :wq<CR>
+" autocmd FocusLost * :set number
+" autocmd FocusGained * :set relativenumber
 
-" Tab completion
-"ruby
 autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-"improve autocomplete menu color
-highlight Pmenu ctermbg=238 gui=bold
+autocmd BufEnter * inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+autocmd BufEnter * inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
+autocmd BufWritePost *.hs GhcModCheckAndLintAsync
 
-" Settings for VimClojure
-" let g:clj_highlight_builtins=1      " Highlight Clojure's builtins
-let vimclojure#HighlightBuiltins = 1
-" let g:clj_paren_rainbow=1           " Rainbow parentheses'!
+filetype plugin indent on     " required!
+
+let g:pymode_rope = 0
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_smart_case = 1
+
+set vb
+set guifont=Menlo_Regular:h12
+set guioptions-=T  "remove toolbar
+set t_Co=256
+set expandtab
+set shiftwidth=2
+set softtabstop=2
+set ignorecase
+set smartcase
+set hlsearch
+set incsearch
+set rnu
+set background=dark
+set list listchars=tab:>>,eol:¬,trail:·
+set encoding=utf-8 " Necessary to show Unicode glyphs
+set wildmenu
+set wildmode=full
+set omnifunc=syntaxcomplete#Complete
+
+noremap <silent> <Right> <c-w>l
+noremap <silent> <Left> <c-w>h
+noremap <silent> <Up> <c-w>k
+noremap <silent> <Down> <c-w>j
+
+let mapleader = ','
+map <leader>f :CtrlP<CR>
+map <silent> <leader>c mpgg=G<CR>:%s/\s\+$//g<CR>`p
+map <leader>d :NERDTreeToggle<CR>
+map <leader>b :CtrlPBuffer<CR>
+map <leader>t :TlistToggle<CR>
+map <leader>u :GundoToggle<CR>
+
+syntax enable
+colorscheme badwolf
+
+let ruby_fold = 1
+
+" Clear the search buffer when hitting return
+function! MapCR()
+  nnoremap <cr> :nohlsearch<cr>
+endfunction
+call MapCR()
+
+" Use space to toggle folds
+nnoremap <Space> za
