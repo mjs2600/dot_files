@@ -49,6 +49,9 @@ Bundle 'klen/python-mode'
 " Chuck
 Bundle 'vim-scripts/ck.vim'
 
+" Javascript
+Bundle 'nono/vim-handlebars'
+
 " autocmd FocusLost * :set number
 " autocmd FocusGained * :set relativenumber
 
