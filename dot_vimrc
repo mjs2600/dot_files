@@ -39,6 +39,9 @@ Bundle 'ujihisa/neco-ghc'
 Bundle 'Shougo/vimproc'
 Bundle 'Twinside/vim-haskellFold'
 
+" Erlang
+Bundle 'oscarh/vimerl'
+
 " Elixir
 Bundle 'elixir-lang/vim-elixir'
 
