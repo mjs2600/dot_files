@@ -100,6 +100,7 @@ set encoding=utf-8 " Necessary to show Unicode glyphs
 set wildmenu
 set wildmode=full
 set omnifunc=syntaxcomplete#Complete
+set clipboard=unnamed
 
 noremap <silent> <Right> <c-w>l
 noremap <silent> <Left> <c-w>h
