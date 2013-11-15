@@ -102,15 +102,15 @@ noremap <silent> <Up> <c-w>k
 noremap <silent> <Down> <c-w>j
 
 let mapleader = ','
-map <leader>f :CtrlP<CR>
-map <silent> <leader>c mpgg=G<CR>:%s/\s\+$//g<CR>`p
-map <leader>d :NERDTreeToggle<CR>
-map <leader>b :CtrlPBuffer<CR>
-map <leader>t :TlistToggle<CR>
-map <leader>u :GundoToggle<CR>
-map <leader>w :w<CR>
-map <leader>s :Ag 
-map <leader>. :e ~/.vimrc<CR>
+noremap <leader>f :CtrlP<CR>
+noremap <silent> <leader>c mpgg=G<CR>:%s/\s\+$//g<CR>`p
+noremap <leader>d :NERDTreeToggle<CR>
+noremap <leader>b :CtrlPBuffer<CR>
+noremap <leader>t :TlistToggle<CR>
+noremap <leader>u :GundoToggle<CR>
+noremap <leader>w :w<CR>
+noremap <leader>s :Ag 
+noremap <leader>. :e ~/.vimrc<CR>
 
 syntax enable
 colorscheme badwolf
