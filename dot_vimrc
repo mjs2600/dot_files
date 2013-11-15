@@ -116,6 +116,8 @@ map <leader>b :CtrlPBuffer<CR>
 map <leader>t :TlistToggle<CR>
 map <leader>u :GundoToggle<CR>
 map <leader>w :w<CR>
+map <leader>s :Ag 
+map <leader>. :e ~/.vimrc<CR>
 
 syntax enable
 colorscheme badwolf
