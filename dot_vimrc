@@ -52,8 +52,6 @@ Bundle 'klen/python-mode'
 " Javascript
 Bundle 'nono/vim-handlebars'
 
-" autocmd FocusLost * :set number
-" autocmd FocusGained * :set relativenumber
 " Ruby
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-rails.git'
