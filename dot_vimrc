@@ -55,9 +55,6 @@ Bundle 'elixir-lang/vim-elixir'
 Bundle 'davidhalter/jedi-vim'
 Bundle 'klen/python-mode'
 
-" Chuck
-Bundle 'vim-scripts/ck.vim'
-
 " Javascript
 Bundle 'nono/vim-handlebars'
 
