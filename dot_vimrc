@@ -47,6 +47,7 @@ Bundle 'oscarh/vimerl'
 
 " Elixir
 Bundle 'elixir-lang/vim-elixir'
+Bundle 'mattonrails/vim-mix.git'
 
 " Python
 Bundle 'davidhalter/jedi-vim'
