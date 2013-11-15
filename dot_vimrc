@@ -101,6 +101,7 @@ set wildmenu
 set wildmode=full
 set omnifunc=syntaxcomplete#Complete
 set clipboard=unnamed
+setlocal spell spelllang=en_us
 
 noremap <silent> <Right> <c-w>l
 noremap <silent> <Left> <c-w>h
