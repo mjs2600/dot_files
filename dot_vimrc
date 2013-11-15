@@ -134,9 +134,10 @@ call MapCR()
 nnoremap <Space> za
 
 " Make vim very magic
-nnoremap / /\v
+" nnoremap / /\v
 
 " Powerline
 "python from powerline.vim import setup as powerline_setup
 "python powerline_setup()
 "python del powerline_setup
+
