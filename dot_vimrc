@@ -68,6 +68,9 @@ filetype plugin indent on     " required!
 highlight Pmenu ctermbg=238 gui=bold
 
 let g:pymode_rope = 0
+
+" Force vim-rails to work with neocomplcache
+let g:neocomplcache_force_overwrite_completefunc = 1
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_enable_camel_case_completion = 1
