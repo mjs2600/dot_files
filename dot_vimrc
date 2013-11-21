@@ -117,6 +117,8 @@ noremap <leader>w :w<CR>
 noremap <leader>s :Ag 
 noremap <leader>. :e ~/.vimrc<CR>
 
+nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
+
 syntax enable
 colorscheme badwolf
 
