@@ -30,6 +30,7 @@ Bundle 'wikitopian/hardmode'
 " Dash
 Bundle 'rizzatti/funcoo.vim'
 Bundle 'rizzatti/dash.vim'
+nmap <silent><leader>vd :Dash<CR>
 
 " Haskell
 Bundle 'eagletmt/ghcmod-vim'
