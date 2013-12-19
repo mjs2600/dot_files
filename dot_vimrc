@@ -59,6 +59,7 @@ Bundle 'nono/vim-handlebars'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-rails.git'
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'thoughtbot/vim-rspec'
 autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
