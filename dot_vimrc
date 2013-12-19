@@ -73,6 +73,7 @@ highlight Pmenu ctermbg=238 gui=bold
 autocmd BufEnter * inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 autocmd BufEnter * inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 autocmd BufWritePost *.hs GhcModCheckAndLintAsync
+autocmd BufNewFile,BufRead *.ck setf ck 
 
 filetype plugin indent on     " required!
 
