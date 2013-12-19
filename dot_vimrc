@@ -9,6 +9,7 @@ Bundle 'gmarik/vundle'
 Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-sensible'
@@ -16,27 +17,20 @@ Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'bling/vim-airline'
 Bundle 'vim-scripts/vimwiki'
-Bundle 'scrooloose/syntastic'
-"Bundle 'Shougo/neocomplcache.vim'
 Bundle 'sjl/badwolf'
 Bundle 'sjl/gundo.vim'
-Bundle 'othree/html5.vim'
-Bundle 'ervandew/supertab'
+"Bundle 'ervandew/supertab'
 Bundle 'vim-scripts/taglist.vim'
-Bundle 'mattn/webapi-vim'
-Bundle 'mattn/gist-vim'
 Bundle 'rking/ag.vim'
-Bundle 'maxbrunsfeld/vim-yankstack'
 Bundle 'slim-template/vim-slim'
-
-" Ruby
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'tpope/vim-rails.git'
-Bundle 'kchmck/vim-coffee-script'
+Bundle 'othree/html5.vim'
+Bundle 'Shougo/neocomplcache.vim'
+Bundle 'wikitopian/hardmode'
 
 " Dash
 Bundle 'rizzatti/funcoo.vim'
 Bundle 'rizzatti/dash.vim'
+nmap <silent><leader>vd :Dash<CR>
 
 " Haskell
 Bundle 'eagletmt/ghcmod-vim'
@@ -44,26 +38,27 @@ Bundle 'dag/vim2hs'
 Bundle 'ujihisa/neco-ghc'
 Bundle 'Shougo/vimproc'
 Bundle 'Twinside/vim-haskellFold'
+autocmd BufWritePost *.hs GhcModCheckAndLintAsync
 
 " Erlang
 Bundle 'oscarh/vimerl'
 
 " Elixir
 Bundle 'elixir-lang/vim-elixir'
+Bundle 'mattonrails/vim-mix.git'
+autocmd BufRead,BufNewFile *.eex set filetype = mason
 
 " Python
 Bundle 'davidhalter/jedi-vim'
 Bundle 'klen/python-mode'
 
-" Chuck
-Bundle 'vim-scripts/ck.vim'
-
 " Javascript
 Bundle 'nono/vim-handlebars'
 
-" autocmd FocusLost * :set number
-" autocmd FocusGained * :set relativenumber
-
+" Ruby
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'tpope/vim-rails.git'
+Bundle 'kchmck/vim-coffee-script'
 autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
@@ -75,12 +70,20 @@ autocmd BufEnter * inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 autocmd BufWritePost *.hs GhcModCheckAndLintAsync
 autocmd BufNewFile,BufRead *.ck setf ck 
 
+" Style
 filetype plugin indent on     " required!
+highlight Pmenu ctermbg=238 gui=bold
 
 let g:pymode_rope = 0
+
+" Force vim-rails to work with neocomplcache
+let g:neocomplcache_force_overwrite_completefunc = 1
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1
-let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
+let g:neocomplcache_enable_camel_case_completion = 1
+let g:neocomplcache_enable_underbar_completion = 1
+let g:neocomplcache_min_syntax_length = 3 
+"let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 let g:syntastic_mode_map={ 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': ['html', 'vimwiki', 'vim'] }
 
 set vb
@@ -95,6 +98,7 @@ set smartcase
 set hlsearch
 set incsearch
 set rnu
+set number
 set background=dark
 set list listchars=tab:>>,eol:¬,trail:·
 set encoding=utf-8 " Necessary to show Unicode glyphs
@@ -102,6 +106,7 @@ set wildmenu
 set wildmode=full
 set omnifunc=syntaxcomplete#Complete
 set clipboard=unnamed
+set spell spelllang=en_us
 
 noremap <silent> <Right> <c-w>l
 noremap <silent> <Left> <c-w>h
@@ -109,13 +114,17 @@ noremap <silent> <Up> <c-w>k
 noremap <silent> <Down> <c-w>j
 
 let mapleader = ','
-map <leader>f :CtrlP<CR>
-map <silent> <leader>c mpgg=G<CR>:%s/\s\+$//g<CR>`p
-map <leader>d :NERDTreeToggle<CR>
-map <leader>b :CtrlPBuffer<CR>
-map <leader>t :TlistToggle<CR>
-map <leader>u :GundoToggle<CR>
-map <leader>w :w<CR>
+noremap <leader>f :CtrlP<CR>
+noremap <silent> <leader>c mpgg=G<CR>:%s/\s\+$//g<CR>`p
+noremap <leader>d :NERDTreeToggle<CR>
+noremap <leader>b :CtrlPBuffer<CR>
+noremap <leader>t :TlistToggle<CR>
+noremap <leader>u :GundoToggle<CR>
+noremap <leader>w :w<CR>
+noremap <leader>s :Ag 
+noremap <leader>. :e ~/.vimrc<CR>
+
+nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
 
 syntax enable
 colorscheme badwolf
@@ -132,9 +141,4 @@ call MapCR()
 nnoremap <Space> za
 
 " Make vim very magic
-nnoremap / /\v
-
-" Powerline
-"python from powerline.vim import setup as powerline_setup
-"python powerline_setup()
-"python del powerline_setup
+" nnoremap / /\v
