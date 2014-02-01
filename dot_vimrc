@@ -54,7 +54,7 @@ Bundle 'oscarh/vimerl'
 Bundle 'elixir-lang/vim-elixir'
 Bundle 'mattonrails/vim-mix.git'
 "Bundle 'carlosgaldino/elixir-snippets'
-autocmd BufRead,BufNewFile *.eex set filetype=mason
+autocmd BufRead,BufNewFile *.eex set filetype=eruby.html
 autocmd FileType elixir noremap <buffer> <leader>t :!mix test<cr>
 
 " Python
