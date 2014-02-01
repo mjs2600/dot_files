@@ -46,7 +46,7 @@ Bundle 'oscarh/vimerl'
 " Elixir
 Bundle 'elixir-lang/vim-elixir'
 Bundle 'mattonrails/vim-mix.git'
-autocmd BufRead,BufNewFile *.eex set filetype = mason
+autocmd BufRead,BufNewFile *.eex set filetype=eruby.html
 
 " Python
 Bundle 'davidhalter/jedi-vim'
