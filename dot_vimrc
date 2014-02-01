@@ -69,10 +69,18 @@ autocmd BufRead,BufNewFile *.litcoffee set filetype=markdown
 " Ruby
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-rails.git'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'thoughtbot/vim-rspec'
 autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
 "autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-"autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+highlight Pmenu ctermbg=238 gui=bold
+
+autocmd BufEnter * inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+autocmd BufEnter * inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
+autocmd BufWritePost *.hs GhcModCheckAndLintAsync
+autocmd BufNewFile,BufRead *.ck setf ck 
 
 " Style
 filetype plugin indent on     " required!
