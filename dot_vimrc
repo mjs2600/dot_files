@@ -1,76 +1,79 @@
-set nocompatible               " be iMproved
-filetype off                   " required!
+if has('vim_starting')
+  set nocompatible               " be iMproved
+  set rtp+=~/.vim/bundle/neobundle.vim/
+endif
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+
+call neobundle#rc(expand('~/.vim/bundle/'))
+
+NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Github Bundles
-Bundle 'gmarik/vundle'
-Bundle 'kien/ctrlp.vim'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-sensible'
-Bundle 'tpope/vim-abolish'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'bling/vim-airline'
-Bundle 'vim-scripts/vimwiki'
-Bundle 'sjl/badwolf'
-Bundle 'nanotech/jellybeans.vim'
-Bundle 'sjl/gundo.vim'
-"Bundle 'ervandew/supertab' "Might be slow
-Bundle 'vim-scripts/taglist.vim'
-Bundle 'rking/ag.vim'
-"Bundle 'slim-template/vim-slim'
-Bundle 'othree/html5.vim'
-Bundle 'plasticboy/vim-markdown'
-"Bundle 'Shougo/neocomplcache.vim'
-Bundle 'wikitopian/hardmode'
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
-Bundle 'garbas/vim-snipmate'
-Bundle 'honza/vim-snippets'
-Bundle 'Lokaltog/vim-easymotion'
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'tpope/vim-sensible'
+NeoBundle 'tpope/vim-abolish'
+NeoBundle 'tpope/vim-unimpaired'
+NeoBundle 'bling/vim-airline'
+NeoBundle 'vim-scripts/vimwiki'
+NeoBundle 'sjl/badwolf'
+NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'sjl/gundo.vim'
+"NeoBundle 'ervandew/supertab' "Might be slow
+NeoBundle 'vim-scripts/taglist.vim'
+NeoBundle 'rking/ag.vim'
+"NeoBundle 'slim-template/vim-slim'
+NeoBundle 'othree/html5.vim'
+NeoBundle 'plasticboy/vim-markdown'
+"NeoBundle 'Shougo/neocomplcache.vim'
+NeoBundle 'wikitopian/hardmode'
+NeoBundle 'MarcWeber/vim-addon-mw-utils'
+NeoBundle 'tomtom/tlib_vim'
+NeoBundle 'garbas/vim-snipmate'
+NeoBundle 'honza/vim-snippets'
+NeoBundle 'Lokaltog/vim-easymotion'
 
 " Dash
-Bundle 'rizzatti/funcoo.vim'
-Bundle 'rizzatti/dash.vim'
+NeoBundle 'rizzatti/funcoo.vim'
+NeoBundle 'rizzatti/dash.vim'
 nmap <silent><leader>vd :Dash<CR>
 
 " Haskell
-Bundle 'eagletmt/ghcmod-vim'
-Bundle 'dag/vim2hs'
-Bundle 'ujihisa/neco-ghc'
-Bundle 'Shougo/vimproc'
-Bundle 'Twinside/vim-haskellFold'
+NeoBundle 'eagletmt/ghcmod-vim'
+NeoBundle 'dag/vim2hs'
+NeoBundle 'ujihisa/neco-ghc'
+NeoBundle 'Shougo/vimproc'
+NeoBundle 'Twinside/vim-haskellFold'
 autocmd BufWritePost *.hs GhcModCheckAndLintAsync
 
 " Erlang
-Bundle 'oscarh/vimerl'
+NeoBundle 'oscarh/vimerl'
 
 " Elixir
-Bundle 'elixir-lang/vim-elixir'
-Bundle 'mattonrails/vim-mix.git'
-"Bundle 'carlosgaldino/elixir-snippets'
+NeoBundle 'elixir-lang/vim-elixir'
+NeoBundle 'mattonrails/vim-mix.git'
+"NeoBundle 'carlosgaldino/elixir-snippets'
 autocmd BufRead,BufNewFile *.eex set filetype=eruby.html
 autocmd FileType elixir noremap <buffer> <leader>t :!mix test<cr>
 
 " Python
-Bundle 'davidhalter/jedi-vim'
-Bundle 'klen/python-mode'
+NeoBundle 'davidhalter/jedi-vim'
+NeoBundle 'klen/python-mode'
 
 " Javascript
-Bundle 'nono/vim-handlebars'
-Bundle 'kchmck/vim-coffee-script'
+NeoBundle 'nono/vim-handlebars'
+NeoBundle 'kchmck/vim-coffee-script'
 autocmd BufRead,BufNewFile *.litcoffee set filetype=markdown
 
 " Ruby
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'tpope/vim-rails.git'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'thoughtbot/vim-rspec'
+NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'tpope/vim-rails.git'
+NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'thoughtbot/vim-rspec'
 autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
 "autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
@@ -158,3 +161,5 @@ nnoremap <Space> za
 
 " Make vim very magic
 " nnoremap / /\v
+
+NeoBundleCheck
