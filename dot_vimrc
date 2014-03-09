@@ -46,9 +46,17 @@ nmap <silent><leader>vd :Dash<CR>
 NeoBundle 'eagletmt/ghcmod-vim'
 NeoBundle 'dag/vim2hs'
 NeoBundle 'ujihisa/neco-ghc'
-NeoBundle 'Shougo/vimproc'
 NeoBundle 'Twinside/vim-haskellFold'
+NeoBundle 'Shougo/vimproc', {
+      \ 'build' : {
+      \     'windows' : 'make -f make_mingw32.mak',
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \    },
+      \ }
 autocmd BufWritePost *.hs GhcModCheckAndLintAsync
+autocmd FileType haskell noremap <buffer> <leader>q :GhcModType<cr>
 
 " Erlang
 NeoBundle 'oscarh/vimerl'
