@@ -137,6 +137,7 @@ set clipboard=unnamed
 set cursorline
 set cursorcolumn
 set foldmethod=indent
+set cm=blowfish
 "set spell spelllang=en_us
 
 nnoremap Y y$
