@@ -155,6 +155,7 @@ noremap <leader>u :GundoToggle<CR>
 noremap <leader>w :w<CR>
 noremap <leader>ss :Ag 
 noremap <leader>sp :setlocal spell! spelllang=en_us<CR>
+noremap <leader>sn :UltiSnipsEdit<CR>
 noremap <leader>. :e ~/.vimrc<CR>
 
 nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
