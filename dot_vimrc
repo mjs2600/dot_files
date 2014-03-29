@@ -138,6 +138,8 @@ set wildmenu
 set wildmode=full
 set omnifunc=syntaxcomplete#Complete
 set clipboard=unnamed
+set cursorline
+set cursorcolumn
 "set spell spelllang=en_us
 
 nnoremap Y y$
