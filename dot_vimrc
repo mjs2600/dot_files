@@ -165,8 +165,6 @@ nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
 syntax enable
 colorscheme jellybeans
 
-let ruby_fold = 1
-
 " Clear the search buffer when hitting return
 function! MapCR()
   nnoremap <leader><cr> :nohlsearch<cr>
