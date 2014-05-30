@@ -23,32 +23,25 @@ NeoBundle 'tpope/vim-sensible'
 NeoBundle 'tpope/vim-unimpaired'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'vim-scripts/vimwiki'
-NeoBundle 'sjl/badwolf'
 NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'sjl/gundo.vim'
-"NeoBundle 'ervandew/supertab' "Might be slow
 NeoBundle 'vim-scripts/taglist.vim'
-NeoBundle 'rking/ag.vim'
-"NeoBundle 'slim-template/vim-slim'
 NeoBundle 'othree/html5.vim'
 NeoBundle 'plasticboy/vim-markdown'
-NeoBundle 'Valloric/YouCompleteMe.git' , {
-            \ 'build' : {
-            \      'unix' : './install.sh --clang-completer',
-            \      'mac' : './install.sh --clang-completer'
-            \   },
-            \ }
+NeoBundle 'rking/ag.vim'
+"NeoBundle 'Valloric/YouCompleteMe.git' , {
+"            \ 'build' : {
+"            \      'unix' : './install.sh --clang-completer',
+"            \      'mac' : './install.sh --clang-completer'
+"            \   },
+"            \ }
 NeoBundle 'wikitopian/hardmode'
-NeoBundle 'MarcWeber/vim-addon-mw-utils'
-NeoBundle 'tomtom/tlib_vim'
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'honza/vim-snippets'
-NeoBundle 'Lokaltog/vim-easymotion'
 
 " Dash
 NeoBundle 'rizzatti/funcoo.vim'
 NeoBundle 'rizzatti/dash.vim'
-nmap <silent><leader>vd :Dash<CR>
 
 " Haskell
 NeoBundle 'eagletmt/ghcmod-vim'
@@ -67,21 +60,21 @@ autocmd BufWritePost *.hs GhcModCheckAndLintAsync
 autocmd FileType haskell noremap <buffer> <leader>q :GhcModType<cr>
 
 " Erlang
-NeoBundle 'oscarh/vimerl'
+" NeoBundle 'oscarh/vimerl'
 
 " Elixir
 NeoBundle 'elixir-lang/vim-elixir'
 NeoBundle 'mattonrails/vim-mix.git'
-"NeoBundle 'carlosgaldino/elixir-snippets'
 autocmd BufRead,BufNewFile *.eex set filetype=eruby.html
 autocmd FileType elixir noremap <buffer> <leader>t :!mix test<cr>
 
 " Python
-NeoBundle 'davidhalter/jedi-vim'
-NeoBundle 'klen/python-mode'
-let g:pymode_rope = 0
+" NeoBundle 'davidhalter/jedi-vim'
+" NeoBundle 'klen/python-mode'
+" let g:pymode_rope = 0
 
-" Javascript
+" Web
+NeoBundle 'mattn/emmet-vim'
 NeoBundle 'nono/vim-handlebars'
 NeoBundle 'kchmck/vim-coffee-script'
 autocmd BufRead,BufNewFile *.litcoffee set filetype=markdown
@@ -89,9 +82,6 @@ autocmd BufRead,BufNewFile *.litcoffee set filetype=markdown
 " Ruby
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'tpope/vim-rails'
-NeoBundle 'tpope/vim-bundler'
-NeoBundle 'tpope/vim-rake'
-NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'thoughtbot/vim-rspec'
 autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
@@ -101,8 +91,7 @@ highlight Pmenu ctermbg=238 gui=bold
 
 autocmd BufEnter * inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 autocmd BufEnter * inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
-autocmd BufWritePost *.hs GhcModCheckAndLintAsync
-autocmd BufNewFile,BufRead *.ck setf ck 
+autocmd BufWritePre * :%s/\s\+$//e
 
 " Style
 filetype plugin indent on     " required!
@@ -147,17 +136,19 @@ noremap <silent> <Left> <c-w>h
 noremap <silent> <Up> <c-w>k
 noremap <silent> <Down> <c-w>j
 
-let mapleader = ','
+let mapleader = ' '
+noremap <silent><leader>q :Dash<CR>
 noremap <leader>f :CtrlP<CR>
 noremap <silent> <leader>c mpgg=G<CR>:%s/\s\+$//g<CR>`p
 noremap <leader>d :NERDTreeToggle<CR>
+noremap <leader>c :NERDTreeCWD<CR>
 noremap <leader>b :CtrlPBuffer<CR>
 noremap <leader>t :TlistToggle<CR>
 noremap <leader>u :GundoToggle<CR>
 noremap <leader>w :w<CR>
-noremap <leader>ss :Ag 
-noremap <leader>sp :setlocal spell! spelllang=en_us<CR>
-noremap <leader>sn :UltiSnipsEdit<CR>
+noremap <leader>s :Ag<space>
+noremap <leader>$ :setlocal spell! spelllang=en_us<CR>
+noremap <leader>; :UltiSnipsEdit<CR>
 noremap <leader>. :e ~/.vimrc<CR>
 
 nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
@@ -172,7 +163,7 @@ endfunction
 call MapCR()
 
 " Use space to toggle folds
-nnoremap <Space> za
+"nnoremap <space> za
 
 " Make vim very magic
 " nnoremap / /\v
