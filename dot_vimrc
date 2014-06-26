@@ -90,6 +90,9 @@ autocmd BufEnter * inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 autocmd BufEnter * inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 autocmd BufWritePre * :%s/\s\+$//e
 
+" Shell
+NeoBundle 'dag/vim-fish'
+
 " Style
 filetype plugin indent on     " required!
 highlight Pmenu ctermbg=238 gui=bold
