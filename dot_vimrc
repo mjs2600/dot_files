@@ -53,6 +53,9 @@ NeoBundle 'Shougo/vimproc', {
 autocmd BufWritePost *.hs GhcModCheckAndLintAsync
 autocmd FileType haskell noremap <buffer> <leader>q :GhcModType<cr>
 
+" Elm
+NeoBundle 'lambdatoast/elm.vim'
+
 " Erlang
 " NeoBundle 'oscarh/vimerl'
 
