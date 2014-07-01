@@ -2,6 +2,8 @@ if !isdirectory(glob("~/.vim/bundle/neobundle.vim/"))
   !curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh | sh
 endif
 
+silent !mkdir -p ~/.vim/undo > /dev/null 2>&1
+
 if has('vim_starting')
   set nocompatible               " be iMproved
   set rtp+=~/.vim/bundle/neobundle.vim/
@@ -131,6 +133,8 @@ set cursorline
 set cursorcolumn
 set cm=blowfish
 "set spell spelllang=en_us
+set undofile
+set undodir=~/.vim/undo
 
 nnoremap Y y$
 
