@@ -134,6 +134,7 @@ set cursorcolumn
 set cm=blowfish
 set undofile
 set undodir=~/.vim/undo
+set shell=zsh
 
 nnoremap Y y$
 
