@@ -72,13 +72,24 @@ autocmd BufRead,BufNewFile *.eex set filetype=eruby.html
 autocmd FileType elixir noremap <buffer> <leader>t :!mix test<cr>
 
 " Python
-" NeoBundle 'davidhalter/jedi-vim'
-" NeoBundle 'klen/python-mode'
+NeoBundle 'davidhalter/jedi-vim'
+ NeoBundle 'klen/python-mode'
 " let g:pymode_rope = 0
+let g:jedi#use_tabs_not_buffers = 0
+let g:jedi#goto_assignments_command = "<leader>ga"
+let g:jedi#goto_definitions_command = "<leader>gd"
+let g:jedi#documentation_command = "K"
+let g:jedi#usages_command = "<leader>n"
+let g:jedi#completions_command = "<C-n>"
+let g:jedi#rename_command = "<leader>r"
+let g:jedi#show_call_signatures = "1"
+" let g:jedi#popup_on_dot = 0
+
 
 " Web
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'nono/vim-handlebars'
+NeoBundle 'heartsentwined/vim-emblem'
 NeoBundle 'kchmck/vim-coffee-script'
 autocmd BufRead,BufNewFile *.litcoffee set filetype=markdown
 
@@ -108,9 +119,11 @@ let g:syntastic_mode_map={ 'mode': 'active', 'active_filetypes': [], 'passive_fi
 let g:SuperTabDefaultCompletionType = "context"
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+"let g:airline_left_sep=''
+"let g:airline_right_sep=''
 
 set vb
-set guifont=Menlo_Regular:h12
+set guifont=Inconsolata\ for\ Powerline:h14
 set guioptions-=T  "remove toolbar
 set t_Co=256
 set expandtab
@@ -135,6 +148,7 @@ set cm=blowfish
 set undofile
 set undodir=~/.vim/undo
 set shell=zsh
+set linespace=0 " For Airline
 
 nnoremap Y y$
 
