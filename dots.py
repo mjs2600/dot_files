@@ -2,12 +2,14 @@
 import os
 import os.path
 import glob
+import sys
 
-os.chdir(os.path.expanduser("~"))
-for orig in glob.glob("dot_files/dot_*"):
-    dest = os.path.split(orig)[1].replace("dot_", ".")
-    print "Setting up " + dest
+dotfiles = sys.argv[1]
+homedir = sys.argv[2]
+
+for orig in glob.glob( os.path.join(dotfiles, "dot_*") ):
+    dest = os.path.join( homedir, os.path.split(orig)[-1].replace("dot_", "."))
+    print "Setting up " + dest + " for " + orig
     if os.path.lexists(dest):
         os.remove(dest)
     os.symlink(orig, dest)
-
