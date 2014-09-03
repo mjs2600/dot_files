@@ -38,6 +38,7 @@ NeoBundle 'rking/ag.vim'
 NeoBundle 'wikitopian/hardmode'
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'honza/vim-snippets'
+NeoBundle 'Lokaltog/vim-easymotion'
 
 " Dash
 NeoBundle 'rizzatti/funcoo.vim'
@@ -68,12 +69,12 @@ NeoBundle 'lambdatoast/elm.vim'
 " Elixir
 NeoBundle 'elixir-lang/vim-elixir'
 NeoBundle 'mattonrails/vim-mix.git'
-autocmd BufRead,BufNewFile *.eex set filetype=eruby.html
+" autocmd BufRead,BufNewFile *.eex set filetype=eruby.html
 autocmd FileType elixir noremap <buffer> <leader>t :!mix test<cr>
 
 " Python
-NeoBundle 'davidhalter/jedi-vim'
- NeoBundle 'klen/python-mode'
+" NeoBundle 'davidhalter/jedi-vim'
+NeoBundle 'klen/python-mode'
 " let g:pymode_rope = 0
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#goto_assignments_command = "<leader>ga"
