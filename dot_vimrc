@@ -69,7 +69,6 @@ NeoBundle 'lambdatoast/elm.vim'
 " Elixir
 NeoBundle 'elixir-lang/vim-elixir'
 NeoBundle 'mattonrails/vim-mix.git'
-" autocmd BufRead,BufNewFile *.eex set filetype=eruby.html
 autocmd FileType elixir noremap <buffer> <leader>t :!mix test<cr>
 
 " Python
@@ -98,10 +97,13 @@ autocmd BufRead,BufNewFile *.litcoffee set filetype=markdown
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'tpope/vim-rails'
 NeoBundle 'thoughtbot/vim-rspec'
+NeoBundle 'ngmy/vim-rubocop'
 autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+
 highlight Pmenu ctermbg=238 gui=bold
 
 autocmd BufEnter * inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
