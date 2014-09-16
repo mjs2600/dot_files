@@ -30,6 +30,7 @@ NeoBundle 'tpope/vim-unimpaired'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'vim-scripts/vimwiki'
 NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'sjl/badwolf'
 NeoBundle 'sjl/gundo.vim'
 NeoBundle 'vim-scripts/taglist.vim'
 NeoBundle 'othree/html5.vim'
@@ -161,7 +162,10 @@ noremap <leader>. :e ~/.vimrc<CR>
 nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
 
 syntax enable
-colorscheme jellybeans
+colorscheme badwolf
+
+hi Normal ctermbg=none
+hi Nontext ctermbg=none
 
 " Clear the search buffer when hitting return
 function! MapCR()
