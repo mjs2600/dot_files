@@ -2,6 +2,10 @@ if !isdirectory(glob("~/.vim/bundle/neobundle.vim/"))
   !curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh | sh
 endif
 
+if !isdirectory(glob("~/.vim/bundle/Vundle.vim/"))
+  !git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+endif
+
 silent !mkdir -p ~/.vim/undo > /dev/null 2>&1
 
 if has('vim_starting')
@@ -10,8 +14,11 @@ if has('vim_starting')
 endif
 
 filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
 
-call neobundle#rc(expand('~/.vim/bundle/'))
+call neobundle#begin(expand('~/.vim/bundle/'))
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 
@@ -40,6 +47,7 @@ NeoBundle 'wikitopian/hardmode'
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'honza/vim-snippets'
 NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'Shougo/neocomplete.vim'
 
 " Dash
 NeoBundle 'rizzatti/funcoo.vim'
@@ -90,8 +98,9 @@ let g:jedi#show_call_signatures = "1"
 " Web
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'nono/vim-handlebars'
-NeoBundle 'heartsentwined/vim-emblem'
+NeoBundle 'burnettk/vim-angular'
 NeoBundle 'kchmck/vim-coffee-script'
+" NeoBundle 'marijnh/tern_for_vim'
 autocmd BufRead,BufNewFile *.litcoffee set filetype=markdown
 
 " Ruby
@@ -113,6 +122,8 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 " Shell
 NeoBundle 'dag/vim-fish'
+
+call neobundle#end()
 
 " Style
 filetype plugin indent on     " required!
@@ -193,14 +204,21 @@ call MapCR()
 
 " Use space to toggle folds
 "nnoremap <space> za
+nnoremap <leader><space> za
+vnoremap <leader><space> zf
 
 " Make vim very magic
 " nnoremap / /\v
+
+" CtrlP
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
 " Snippets
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-l>"
 let g:UltiSnipsJumpBackwardTrigger="<c-h>"
 let g:UltiSnipsListSnippets="<c-k>"
+
+source ~/.vimrc.scimed
 
 NeoBundleCheck
