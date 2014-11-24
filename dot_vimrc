@@ -47,7 +47,10 @@ NeoBundle 'wikitopian/hardmode'
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'honza/vim-snippets'
 NeoBundle 'Lokaltog/vim-easymotion'
+
+" Completion
 NeoBundle 'Shougo/neocomplete.vim'
+let g:neocomplete#enable_at_startup = 1
 
 " Dash
 NeoBundle 'rizzatti/funcoo.vim'
