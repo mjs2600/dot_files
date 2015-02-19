@@ -47,6 +47,7 @@ NeoBundle 'wikitopian/hardmode'
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'honza/vim-snippets'
 NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'Shougo/unite.vim'
 
 " Completion
 NeoBundle 'Shougo/neocomplete.vim'
@@ -83,9 +84,14 @@ NeoBundle 'elixir-lang/vim-elixir'
 NeoBundle 'mattonrails/vim-mix.git'
 autocmd FileType elixir noremap <buffer> <leader>t :!mix test<cr>
 
+" Julia
+NeoBundle 'JuliaLang/julia-vim'
+
 " Python
 " NeoBundle 'davidhalter/jedi-vim'
 NeoBundle 'klen/python-mode'
+NeoBundle 'ivanov/vim-ipython'
+NeoBundle 'hylang/vim-hy'
 " let g:pymode_rope = 0
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#goto_assignments_command = "<leader>ga"
@@ -97,12 +103,21 @@ let g:jedi#rename_command = "<leader>r"
 let g:jedi#show_call_signatures = "1"
 " let g:jedi#popup_on_dot = 0
 
+" Rust
+NeoBundle 'wting/rust.vim'
+
+" LaTeX
+NeoBundle 'lervag/vim-latex'
+let g:tex_flavor='pdflatex'
+let g:Tex_DefaultTargetFormat = 'pdf'
 
 " Web
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'nono/vim-handlebars'
 NeoBundle 'burnettk/vim-angular'
 NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'wookiehangover/jshint.vim'
+NeoBundle 'marijnh/tern_for_vim', { 'build': { 'mac': 'npm install' } }
 " NeoBundle 'marijnh/tern_for_vim'
 autocmd BufRead,BufNewFile *.litcoffee set filetype=markdown
 
@@ -122,11 +137,17 @@ highlight Pmenu ctermbg=238 gui=bold
 autocmd BufEnter * inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 autocmd BufEnter * inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 autocmd BufWritePre * :%s/\s\+$//e
+autocmd BufReadPost * normal `"
 
 " Shell
 NeoBundle 'dag/vim-fish'
 
 call neobundle#end()
+
+" Unite
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#filters#sorter_default#use(['sorter_rank'])
+call unite#custom#source('file_rec/async','sorters','sorter_rank')
 
 " Style
 filetype plugin indent on     " required!
@@ -178,11 +199,11 @@ noremap <silent> <Down> <c-w>j
 
 let mapleader = ' '
 noremap <silent><leader>q :Dash<CR>
-noremap <leader>f :CtrlP<CR>
+noremap <leader>f :Unite buffer file_rec/async -start-insert<CR>
 noremap <silent> <leader>c mpgg=G<CR>:%s/\s\+$//g<CR>`p
 noremap <leader>d :NERDTreeToggle<CR>
 noremap <leader>c :NERDTreeCWD<CR>
-noremap <leader>b :CtrlPBuffer<CR>
+noremap <leader>b :Unite buffer -start-insert<CR>
 noremap <leader>t :TlistToggle<CR>
 noremap <leader>u :GundoToggle<CR>
 noremap <leader>w :w<CR>
@@ -207,8 +228,8 @@ call MapCR()
 
 " Use space to toggle folds
 "nnoremap <space> za
-nnoremap <leader><space> za
-vnoremap <leader><space> zf
+nnoremap <leader>z za
+vnoremap <leader>z zf
 
 " Make vim very magic
 " nnoremap / /\v
