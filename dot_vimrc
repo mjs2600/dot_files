@@ -183,12 +183,15 @@ set omnifunc=syntaxcomplete#Complete
 set clipboard=unnamed
 set cursorline
 set cursorcolumn
-set cm=blowfish
 set undofile
 set undodir=~/.vim/undo
 set shell=zsh
 set linespace=0 " For Airline
 set mouse=a
+
+if !has('nvim')
+  set cm=blowfish
+endif
 
 nnoremap Y y$
 
