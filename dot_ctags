@@ -12,3 +12,10 @@
 --regex-Elixir=/^[ \t]*defrecordp[ \t]+([A-Z][a-zA-Z0-9_]*\.)*([A-Z][a-zA-Z0-9_?!]*)/\3/r,records,records (defrecord...)/
 --regex-Elixir=/^[ \t]*defstruct[ \t]+([A-Z][a-zA-Z0-9_:]*\.)*([A-Z][a-zA-Z0-9_?!]*)/\3/r,structs,structs (defstruct...)/
 --python-kinds=-i
+
+--recurse=yes
+--exclude=.git
+--exclude=vendor/*
+--exclude=node_modules/*
+--exclude=db/*
+--exclude=log/*

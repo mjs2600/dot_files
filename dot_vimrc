@@ -1,97 +1,78 @@
-if !isdirectory(glob("~/.vim/bundle/neobundle.vim/"))
-  !curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh | sh
-endif
-
-if !isdirectory(glob("~/.vim/bundle/Vundle.vim/"))
-  !git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+if !filereadable(glob("~/.vim/autoload/plug.vim"))
+  !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 endif
 
 silent !mkdir -p ~/.vim/undo > /dev/null 2>&1
-
-if has('vim_starting')
-  set nocompatible               " be iMproved
-  set rtp+=~/.vim/bundle/neobundle.vim/
-endif
-
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
-
-call neobundle#begin(expand('~/.vim/bundle/'))
-
-NeoBundleFetch 'Shougo/neobundle.vim'
+call plug#begin('~/.vim/plugged')
 
 " Github Bundles
-NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'tpope/vim-abolish'
-NeoBundle 'tpope/vim-commentary'
-NeoBundle 'tpope/vim-endwise'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'tpope/vim-repeat'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'tpope/vim-sensible'
-NeoBundle 'tpope/vim-unimpaired'
-NeoBundle 'bling/vim-airline'
-NeoBundle 'vim-scripts/vimwiki'
-NeoBundle 'nanotech/jellybeans.vim'
-NeoBundle 'sjl/badwolf'
-NeoBundle 'sjl/gundo.vim'
-NeoBundle 'vim-scripts/taglist.vim'
-NeoBundle 'othree/html5.vim'
-NeoBundle 'plasticboy/vim-markdown'
-NeoBundle 'rking/ag.vim'
-NeoBundle 'wikitopian/hardmode'
-NeoBundle 'SirVer/ultisnips'
-NeoBundle 'honza/vim-snippets'
-NeoBundle 'Lokaltog/vim-easymotion'
-NeoBundle 'Shougo/unite.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-unimpaired'
+Plug 'bling/vim-airline'
+Plug 'vim-scripts/vimwiki'
+Plug 'nanotech/jellybeans.vim'
+Plug 'sjl/badwolf'
+Plug 'sjl/gundo.vim'
+Plug 'vim-scripts/taglist.vim'
+Plug 'othree/html5.vim'
+Plug 'plasticboy/vim-markdown'
+Plug 'rking/ag.vim'
+Plug 'wikitopian/hardmode'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'Shougo/unite.vim'
+Plug 'tsukkee/unite-tag'
+
+" Formatting
+Plug 'Chiel92/vim-autoformat'
+au BufWrite * :Autoformat
+let g:autoformat_autoindent = 0
 
 " Completion
-NeoBundle 'Shougo/neocomplete.vim'
+Plug 'Shougo/neocomplete.vim'
 let g:neocomplete#enable_at_startup = 1
 
 " Dash
-NeoBundle 'rizzatti/funcoo.vim'
-NeoBundle 'rizzatti/dash.vim'
+Plug 'rizzatti/funcoo.vim'
+Plug 'rizzatti/dash.vim'
 
 " Haskell
-NeoBundle 'eagletmt/ghcmod-vim'
-NeoBundle 'dag/vim2hs'
-NeoBundle 'eagletmt/neco-ghc'
-NeoBundle 'Twinside/vim-haskellFold'
-NeoBundle 'Shougo/vimproc', {
-      \ 'build' : {
-      \     'windows' : 'make -f make_mingw32.mak',
-      \     'cygwin' : 'make -f make_cygwin.mak',
-      \     'mac' : 'make -f make_mac.mak',
-      \     'unix' : 'make -f make_unix.mak',
-      \    },
-      \ }
-autocmd BufWritePost *.hs GhcModCheckAndLintAsync
-autocmd FileType haskell noremap <buffer> <leader>q :GhcModType<cr>
+Plug 'eagletmt/ghcmod-vim'
+Plug 'dag/vim2hs'
+Plug 'eagletmt/neco-ghc'
+Plug 'Twinside/vim-haskellFold'
+Plug 'Shougo/vimproc', { 'do': 'make' }
+" autocmd BufWritePost *.hs GhcModCheckAndLintAsync
+" autocmd FileType haskell noremap <buffer> <leader>q :GhcModType<cr>
 
 " Elm
-NeoBundle 'lambdatoast/elm.vim'
+Plug 'lambdatoast/elm.vim'
 
 " Erlang
-" NeoBundle 'oscarh/vimerl'
+" Plug 'oscarh/vimerl'
 
 " Elixir
-NeoBundle 'elixir-lang/vim-elixir'
-NeoBundle 'mattonrails/vim-mix.git'
+Plug 'elixir-lang/vim-elixir'
+" Plug 'mattonrails/vim-mix.git'
 autocmd FileType elixir noremap <buffer> <leader>t :!mix test<cr>
 
 " Julia
-NeoBundle 'JuliaLang/julia-vim'
+Plug 'JuliaLang/julia-vim'
 
 " Python
-" NeoBundle 'davidhalter/jedi-vim'
-NeoBundle 'klen/python-mode'
-NeoBundle 'ivanov/vim-ipython'
-NeoBundle 'hylang/vim-hy'
+" Plug 'davidhalter/jedi-vim'
+Plug 'klen/python-mode'
+Plug 'ivanov/vim-ipython'
+Plug 'hylang/vim-hy'
 " let g:pymode_rope = 0
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#goto_assignments_command = "<leader>ga"
@@ -104,33 +85,41 @@ let g:jedi#show_call_signatures = "1"
 " let g:jedi#popup_on_dot = 0
 
 " Rust
-NeoBundle 'wting/rust.vim'
+Plug 'rust-lang/rust.vim'
+Plug 'racer-rust/vim-racer'
+set hidden
+let g:racer_cmd = "/Users/mjs2600/Code/Personal/Rust/racer/target/release/racer"
+let $RUST_SRC_PATH="/Users/mjs2600/Code/Personal/Rust/rust/src/"
+
 
 " LaTeX
-NeoBundle 'lervag/vim-latex'
+Plug 'lervag/vim-latex'
 let g:tex_flavor='pdflatex'
 let g:Tex_DefaultTargetFormat = 'pdf'
 
 " Web
-NeoBundle 'mattn/emmet-vim'
-NeoBundle 'nono/vim-handlebars'
-NeoBundle 'burnettk/vim-angular'
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'wookiehangover/jshint.vim'
-NeoBundle 'marijnh/tern_for_vim', { 'build': { 'mac': 'npm install' } }
-" NeoBundle 'marijnh/tern_for_vim'
+Plug 'mattn/emmet-vim'
+Plug 'nono/vim-handlebars'
+Plug 'burnettk/vim-angular'
+Plug 'kchmck/vim-coffee-script'
+Plug 'wookiehangover/jshint.vim'
+Plug 'marijnh/tern_for_vim', { 'do': 'npm install -g' }
 autocmd BufRead,BufNewFile *.litcoffee set filetype=markdown
 
 " Ruby
-NeoBundle 'vim-ruby/vim-ruby'
-NeoBundle 'tpope/vim-rails'
-NeoBundle 'thoughtbot/vim-rspec'
-NeoBundle 'ngmy/vim-rubocop'
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-rails'
+Plug 'thoughtbot/vim-rspec'
+Plug 'noprompt/vim-yardoc'
 autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+let g:rspec_runner = "os_x_iterm2"
+" let g:rspec_command = '!bundle exec rspec --drb {spec}'
+let g:rspec_command = '!bundle exec rspec {spec}'
+autocmd FileType ruby noremap <buffer> <leader>t :call RunCurrentSpecFile()<CR>
 
 highlight Pmenu ctermbg=238 gui=bold
 
@@ -140,9 +129,9 @@ autocmd BufWritePre * :%s/\s\+$//e
 autocmd BufReadPost * normal `"
 
 " Shell
-NeoBundle 'dag/vim-fish'
+Plug 'dag/vim-fish'
 
-call neobundle#end()
+call plug#end()
 
 " Unite
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
@@ -205,7 +194,6 @@ noremap <silent><leader>q :Dash<CR>
 noremap <leader>f :Unite buffer file_rec/async -start-insert<CR>
 noremap <silent> <leader>c mpgg=G<CR>:%s/\s\+$//g<CR>`p
 noremap <leader>d :NERDTreeToggle<CR>
-noremap <leader>c :NERDTreeCWD<CR>
 noremap <leader>b :Unite buffer -start-insert<CR>
 noremap <leader>t :TlistToggle<CR>
 noremap <leader>u :GundoToggle<CR>
@@ -214,6 +202,7 @@ noremap <leader>s :Ag<space>
 noremap <leader>$ :setlocal spell! spelllang=en_us<CR>
 noremap <leader>; :UltiSnipsEdit<CR>
 noremap <leader>. :e ~/.vimrc<CR>
+noremap <leader>gd :Unite tag -start-insert<CR>
 
 nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
 
@@ -237,15 +226,10 @@ vnoremap <leader>z zf
 " Make vim very magic
 " nnoremap / /\v
 
-" CtrlP
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-
 " Snippets
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-l>"
 let g:UltiSnipsJumpBackwardTrigger="<c-h>"
 let g:UltiSnipsListSnippets="<c-k>"
 
-source ~/.vimrc.scimed
-
-NeoBundleCheck
+" PlugUpdate
